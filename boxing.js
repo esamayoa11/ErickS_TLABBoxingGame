@@ -25,7 +25,7 @@ function applyDamage(opponent, damage) {
         hitType = "basic";
     } else if (damage >= 6 && damage < 10) {
         hitType = "critical";
-    } else (damage == 10) {
+    } else if (damage == 10) {
         hitType = "Knockout";
     }
 
