@@ -74,7 +74,7 @@ function playTurn() {
 // Game loop 
 function startGame() {
     console.log("Starting the Boxing!");
-    console.log(`${player1.name} vs ${player2}`);
+    console.log(`${player1.name} vs ${player2.name}`);
     while (player1.health > 0 && player2.health > 0) {
         if (!playTurn()) break; // Stop the game if there's a knockout
     }
