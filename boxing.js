@@ -25,8 +25,8 @@ function applyDamage(opponent, damage) {
         hitType = "basic";
     } else if (damage >= 6 && damage < 10) {
         hitType = "critical";
-    } else {
-        hitType = "KNOCKOUT";
+    } else (damage == 10) {
+        hitType = "Knockout";
     }
 
 // Display the hit result 
@@ -43,12 +43,11 @@ function applyDamage(opponent, damage) {
 }
 
 // Function to check if the game is over
-
-function checkKnockout (opponent) {
+function checkKnockout(opponent) {
     if (opponent.health <= 0) {
-        console.log(`${opponent.name} has been knocked out!`);
+        console.log(`${opponent.name} has been KNOCKED OUT! 🥊`);
         console.log(`${currentPlayer.name} is the WINNER! 🏆`);
-        return false; // Game over
+        return true; // Game over
     }
     return false;
 }
@@ -61,19 +60,24 @@ function switchTurns() {
 
 // Main gameplay function
 function playTurn() {
-    let opponent = currentPlayer === player1 ? player2 : player1;
+    let opponent;
+    if (currentPlayer === player1) {
+        opponent = player2;
+    } else {
+        opponent = player1;
+    }
     const damage = generateDamage();
     applyDamage(opponent, damage);
     if (checkKnockout(opponent)) {
-        return false;
+        return false; // Stop the game if there's a knockout
     }
     switchTurns();
-    return true;
+    return true; // Continue the game
 }
 
 // Game loop 
 function startGame() {
-    console.log("Starting the Boxing!");
+    console.log("Starting the Boxing Game!");
     console.log(`${player1.name} vs ${player2.name}`);
     while (player1.health > 0 && player2.health > 0) {
         if (!playTurn()) break; // Stop the game if there's a knockout
