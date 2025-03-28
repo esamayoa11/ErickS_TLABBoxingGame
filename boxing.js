@@ -17,6 +17,11 @@ function generateDamage() {
     return Math.floor(Math.random() * 10) + 1;
 }
 
+// Function to get opponent of current player
+function getOpponent() {
+    return currentPlayer === player1 ? player2 : player1;
+}
+
 // Function to apply damage to the opponent
 function applyDamage(opponent, damage) {
     let hitType = "";
