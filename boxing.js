@@ -60,17 +60,14 @@ function switchTurns() {
 
 // Main gameplay function
 function playTurn() {
-    let opponent;
-    if (currentPlayer === player1) {
-        opponent = player2;
-    } else {
-        opponent = player1;
-    }
+    const opponent = getOpponent();
     const damage = generateDamage();
     applyDamage(opponent, damage);
+
     if (checkKnockout(opponent)) {
-        return false; // Stop the game if there's a knockout
+        return false; // Stop the game if there's a knockout 
     }
+    
     switchTurns();
     return true; // Continue the game
 }
