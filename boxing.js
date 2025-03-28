@@ -35,7 +35,7 @@ function applyDamage(opponent, damage) {
 // Apply damage to opponent's health;
     opponent.health -= damage;
 
-    if (opponent.health < 0 || damage === 10) {
+    if (opponent.health < 0) {
         opponent.health = 0;
     }
 
